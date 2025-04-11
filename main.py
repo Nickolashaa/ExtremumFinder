@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
             pixmap = QPixmap("pic.png")
             self.Graph.setPixmap(pixmap)
         except:
-            pass
+            self.Result.setText("Заполните все поля!")
         
         
 
