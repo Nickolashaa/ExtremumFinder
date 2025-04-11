@@ -71,14 +71,14 @@ font-weight: 500</string>
      <rect>
       <x>390</x>
       <y>290</y>
-      <width>400</width>
-      <height>300</height>
+      <width>380</width>
+      <height>280</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>400</width>
-      <height>300</height>
+      <width>0</width>
+      <height>0</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -99,7 +99,7 @@ font-weight: 500</string>
      <rect>
       <x>390</x>
       <y>150</y>
-      <width>401</width>
+      <width>381</width>
       <height>121</height>
      </rect>
     </property>

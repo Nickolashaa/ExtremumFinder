@@ -27,5 +27,5 @@ def plot_function(func_str: str, a: float, b: float, n_points=1000):
     plt.close()
     
     image = Image.open("pic.png")
-    image = image.resize((400, 300))
+    image = image.resize((380, 280))
     image.save("pic.png")

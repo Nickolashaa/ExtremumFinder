@@ -10,6 +10,7 @@ class ExtremumFinder:
         if '=' in func:
             func = func[func.index('=') + 1:]
         func = func.replace("^", "**")
+        func = func.replace("e", "2.71828182845904")
         self.func = func
         for letter in ascii_letters:
             if letter in func:
@@ -17,34 +18,55 @@ class ExtremumFinder:
                 break
             
     def eval(self, x):
-        return float(eval(self.func.replace(self.variable, str(x))))
+        x_str = f"({x})" if x < 0 else str(x)
+        answer = self.func.replace(self.variable, x_str)
+        return float(eval(answer))
         
     def BisectionMethod(self, a, b, e, findmin):
+        base_interval = {
+            "a": a,
+            "b": b,
+        }
+        f_a = self.eval(a)
+        f_b = self.eval(b)
         if findmin:
-            x_sr = (a + b) / 2
-            L = abs(b - a)
-            f_x_sr = self.eval(x_sr)
-            while L > e:
-                y = a + abs(L) / 4
-                z = b - abs(L) / 4
-                f_y = self.eval(y)
-                f_z = self.eval(z)
-                if f_y < f_x_sr:
-                    b = x_sr
-                    x_sr = y
-                elif f_z < f_x_sr:
-                    a = x_sr
-                    x_sr = z
-                else:
-                    a = y
-                    b = z
-
-                L = abs(b - a)
-            
-            result = f"x* принадлежит [{a:.5f}, {b:.5f}]\nx* = {(a + b) / 2:.5f}"
-            return result
+            def comparison(a, b):
+                return a < b
         else:
-            pass
+            def comparison(a, b):
+                return a > b
+        x_sr = (a + b) / 2
+        L = abs(b - a)
+        f_x_sr = self.eval(x_sr)
+        while L > e:
+            y = a + abs(L) / 4
+            z = b - abs(L) / 4
+            f_y = self.eval(y)
+            f_z = self.eval(z)
+            if comparison(f_y, f_x_sr):
+                b = x_sr
+                x_sr = y
+            elif comparison(f_z, f_x_sr):
+                a = x_sr
+                x_sr = z
+            else:
+                a = y
+                b = z
+
+            L = abs(b - a)
+        
+        x_ans = (a + b) / 2
+        f_x_ans = self.eval(x_ans)
+        
+        if comparison(f_a, f_x_ans):
+            x_ans = base_interval["a"]
+            f_x_ans = f_a
+        if comparison(f_b, f_x_ans):
+            x_ans = base_interval["b"]
+            f_x_ans = f_b
+        result = f"x* = {x_ans:.5f}\nf(x*) = {f_x_ans:.5f}"
+        return result
+
     
     def GoldenRatioMethod(self, a, b, e, findmin):
         if findmin:
