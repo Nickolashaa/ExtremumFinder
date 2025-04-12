@@ -19,6 +19,9 @@ class MainWindow(QMainWindow):
             findmin = 1 if self.MinMaxInput.currentText() == "Поиск минимума" else 0
             a = float(self.LeftIntervalInput.text())
             b = float(self.RightIntervalInput.text())
+            if a >= b:
+                self.Result.setText("Левая граница интервала должна быть\nменьше правой!")
+                return
             e = float(self.EpsilonInput.text())
             method = self.MethodInput.currentText()
             
@@ -35,7 +38,7 @@ class MainWindow(QMainWindow):
             plot_function(self.exf.func, a, b)
             pixmap = QPixmap("pic.png")
             self.Graph.setPixmap(pixmap)
-        except:
+        except Exception:
             self.Result.setText("Заполните все поля!")
         
         
