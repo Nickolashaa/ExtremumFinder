@@ -65,7 +65,7 @@ class ExtremumFinder:
             x_ans = base_interval["b"]
             f_x_ans = f_b
         result = f"x* = {x_ans:.5f}\nf(x*) = {f_x_ans:.5f}"
-        return result
+        return result, x_ans, f_x_ans
 
     
     def GoldenRatioMethod(self, a, b, e, findmin):
@@ -108,7 +108,7 @@ class ExtremumFinder:
             x_ans = base_interval["b"]
             f_x_ans = f_b
         result = f"x* = {x_ans:.5f}\nf(x*) = {f_x_ans:.5f}"
-        return result
+        return result, x_ans, f_x_ans
     
     def NewFibonacci(self, array):
         elem = array[-1] + array[-2]
@@ -169,4 +169,4 @@ class ExtremumFinder:
             x_ans = base_interval["b"]
             f_x_ans = f_b
         result = f"x* = {x_ans:.5f}\nf(x*) = {f_x_ans:.5f}"
-        return result
+        return result, x_ans, f_x_ans

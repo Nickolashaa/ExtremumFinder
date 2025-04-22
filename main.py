@@ -28,14 +28,14 @@ class MainWindow(QMainWindow):
             self.exf.SetFunc(func)
             
             if method == "Метод половинчатого деления":
-                result = self.exf.BisectionMethod(a, b, e, findmin)
+                result, x, y = self.exf.BisectionMethod(a, b, e, findmin)
             if method == "Метод золотого сечения":
-                result = self.exf.GoldenRatioMethod(a, b, e, findmin)
+                result, x, y = self.exf.GoldenRatioMethod(a, b, e, findmin)
             if method == "Метод чисел Фиббоначи":
-                result = self.exf.FibonacciNumberMethod(a, b, e, findmin)
+                result, x, y = self.exf.FibonacciNumberMethod(a, b, e, findmin)
             
             self.Result.setText(result)
-            plot_function(self.exf.func, a, b)
+            plot_function(self.exf.func, a, b, x, y)
             pixmap = QPixmap("pic.png")
             self.Graph.setPixmap(pixmap)
         except Exception:
