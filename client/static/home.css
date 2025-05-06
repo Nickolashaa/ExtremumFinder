@@ -1,0 +1,46 @@
+.navbar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 40px;
+    padding: 30px;
+    border: 2px solid white;
+    border-radius: 20px;
+    height: 15vh;
+    text-align: center;
+    line-height: 15vh;
+    font-weight: 700;
+    margin-top: 15vh;
+    background-color: #1A1A1A;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 2vh;
+}
+
+.btn {
+    background-color: #1A1A1A;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 20vh 0;
+    height: 15vh;
+    font-size: 30px;
+    text-align: center;
+    line-height: 15vh;
+    padding: 20px;
+    min-width: 20%;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {transform: scale(1.1)}
+
+.first {border-color: #FFD700}
+
+.second {border-color: lime}

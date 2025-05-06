@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block HeadLinkCss %}
+<link rel="stylesheet" href="static/second.css">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar-container">
+    <a href="/one-dimensional-optimization" class="btn first">Одномерная оптимизация</a>
+    <a href="/multidimensional-optimization" class="btn second">Многомерная оптимизация</a>
+    <a href="/" class="btn third">To be continued...</a>
+    <a href="/" class="btn forth">To be continued...</a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="left">
+    <form action="/multidimensional-optimization" method="POST">
+        <input class="input-field" type="text" name="func" id="functionInput" placeholder="Введите функцию. Например x ** 3">
+        <div class="first-radio-group">
+            <div class="radio-option">
+                <input type="radio" id="option1" name="MaxOrMin" value="max" checked>
+                <label for="option1">Поиск максимума</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="option2" name="MaxOrMin" value="min">
+                <label for="option2">Поиск минимума</label>
+            </div>
+        </div>
+        <div class="flex-row">
+            <p>Начальная точка: (</p>
+            <input class="input-field" type="text" name="a">
+            <p>;</p>
+            <input class="input-field" type="text" name="b">
+            <p>)</p>
+        </div>
+        <div class="flex-row long">
+            <p>Epsilon 1: </p>
+            <input class="input-field" type="text" name="e1">
+        </div>
+        <div class="flex-row long">
+            <p>Epsilon 2: </p>
+            <input class="input-field" type="text" name="e2">
+        </div>
+        <div class="flex-row long">
+            <p>M: </p>
+            <input class="input-field" type="text" name="M">
+        </div>
+        <div class="second-radio-group">
+            <div class="radio-option">
+                <input type="radio" id="option1" name="Method" value="method1" checked>
+                <label for="option3">Метод градиентного спуска с постоянным шагом</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="option2" name="Method" value="method2">
+                <label for="option4">Метод наискорейшего градиентного спуска</label>
+            </div>
+        </div>
+        <button class="form-btn" type="submit">C A L C U L A T E</button>
+    </form>
+</div>
+<div class="right">
+    {% if calculated %}
+    <div class="answer">
+        {% for item in calculated %}
+            <div class="">{{ item }}</div>
+        {% endfor %}
+    </div>
+    <div class="graph"">
+        <iframe src="static/graph.html" width="800" height="600"></iframe>
+    </div>
+    {% else %}
+    <div class="answer">Ожидаю входные данные...</div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="navbar-container">
+    <a href="/" class="logo">
+        <pre>E X T R E M U M  F I N D E R</pre>
+    </a>
+</div>
+{% endblock %}
