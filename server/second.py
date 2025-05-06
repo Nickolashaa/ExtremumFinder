@@ -18,7 +18,7 @@ class ExtremumFinder:
         for letter in ascii_letters:
             if letter in func:
                 variable.append(letter)
-                if variable == 2:
+                if len(variable) == 2:
                     break
                 
         self.func = self.func.replace(variable[0], "(x)")
@@ -84,7 +84,7 @@ class ExtremumFinder:
                 if t < 1e-10:
                     break
                     
-        return round(x[0], 5), round(x[1], 5), round(f(*x), 5), k
+        return round(x[0], 5), round(x[1], 5), round(f(*x), 5), k + 1
     
     def steepest_gradient_descent(self, x0, epsilon1, epsilon2, M, find_max):
         symbols = [sp.Symbol("x"), sp.Symbol("y")]
@@ -154,7 +154,7 @@ class ExtremumFinder:
             x = new_x
             k += 1
                     
-        return round((x[0] + x[1]) / 2, 5), round(f(*x), 5), k
+        return round(x[0], 5),  round(x[1], 5), round(f(*x), 5), k + 1
     
     
 def test():
@@ -164,10 +164,10 @@ def test():
     e1 = 0.15
     e2 = 0.2
     M = 10
-    findmax = 1
+    findmax = 0
     x1, x2, y, k = obj.gradient_descent_constant_step_str(x, e1, e2, M, findmax)
     print(x1, x2)
     print(y)
     print(k)
 
-test()
+# test()

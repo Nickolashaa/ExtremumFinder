@@ -53,11 +53,11 @@ def MultidimensionalOptimization():
             method = request.form.get("Method")
             obj.SetFunc(func)
             if method == "method1":
-                x, y, k = obj.gradient_descent_constant_step_str(x, e1, e2, M, findmax)
+                x1, x2, y, k = obj.gradient_descent_constant_step_str(x, e1, e2, M, findmax)
             if method == "method2":
-                x, y, k = obj.steepest_gradient_descent(x, e1, e2, M, findmax)
+                x1, x2, y, k = obj.steepest_gradient_descent(x, e1, e2, M, findmax)
             result = list()
-            result.append(f"Найденная точка: {x}")
+            result.append(f"Найденная точка: ({x1}; {x2})")
             result.append(f"Значение функции в точке: {y}")
             result.append(f"Количество итераций: {k}")
             plot_function_from_string(func)
