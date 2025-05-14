@@ -45,7 +45,6 @@ def MultidimensionalOptimization():
             from server.second import ExtremumFinder
             obj = ExtremumFinder()
             func = request.form.get("func")
-            findmax = 1 if request.form.get("MaxOrMin") == "max" else 0
             x = [float(request.form.get("a")), float(request.form.get("b"))]
             e1 = float(request.form.get("e1"))
             e2 = float(request.form.get("e2"))
@@ -53,9 +52,9 @@ def MultidimensionalOptimization():
             method = request.form.get("Method")
             obj.SetFunc(func)
             if method == "method1":
-                x1, x2, y, k = obj.gradient_descent_constant_step_str(x, e1, e2, M, findmax)
+                x1, x2, y, k = obj.gradient_descent_constant_step_str(x, e1, e2, M)
             if method == "method2":
-                x1, x2, y, k = obj.steepest_gradient_descent(x, e1, e2, M, findmax)
+                x1, x2, y, k = obj.steepest_gradient_descent(x, e1, e2, M)
             result = list()
             result.append(f"Найденная точка: ({x1}; {x2})")
             result.append(f"Значение функции в точке: {y}")
