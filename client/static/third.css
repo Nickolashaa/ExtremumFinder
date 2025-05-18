@@ -1,0 +1,178 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 2vh;
+    gap: 30px;
+}
+
+.btn {
+    background-color: #1A1A1A;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 3vh 0;
+    height: 3vh;
+    font-size: 20px;
+    text-align: center;
+    line-height: 3vh;
+    padding: 20px;
+    min-width: 20%;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {transform: scale(1.1)}
+
+.first {
+    border-color: #FFD700;
+}
+
+.second {
+    border-color: lime;
+}
+
+.third {
+    border-color: blue;
+    background-color: blue;
+    color: black;
+    font-weight: 900;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 15px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 20px;
+    height: 1vh;
+    text-align: center;
+    line-height: 1vh;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+}
+
+.left {
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 2em;
+    margin: 0 2em;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+input[type="text"] {
+    all: unset;
+    background-color: #1A1A1A;
+    border: 2px solid blue;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.flex-row > input {
+    width: 50px;
+    height: 5px;
+}
+
+.input-field::placeholder {
+    color: rgb(4, 4, 110);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: blue;
+    font-size: 25px;
+    width: 40em;
+}
+
+.form-btn {
+    background-color: #1A1A1A;
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin: 3vh 3vh;
+    height: 3vh;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1vh;
+    padding: 20px;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    color: blue;
+    font-weight: 600; 
+}
+
+.form-btn:hover {
+    transform: scale(1.05)
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid blue;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    background-color: #1A1A1A;
+    transition: all 0.2s ease;
+  }
+  
+input[type="radio"]:checked {
+border-color: blue;
+}
+
+input[type="radio"]:checked::before {
+content: '';
+display: block;
+width: 10px;
+height: 10px;
+background: blue;
+border-radius: 50%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.answer {
+    color: blue;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 32px;
+}
+
+img {
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 15vh;
+}
+
+#calculator {
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+    border: 2px solid blue;
+    border-radius: 20px;
+}

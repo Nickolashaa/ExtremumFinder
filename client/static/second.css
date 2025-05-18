@@ -34,6 +34,8 @@
     font-weight: 900;
 }
 
+.third {border-color: blue}
+
 .navbar-container {
     display: flex;
     justify-content: center;

@@ -66,3 +66,29 @@ def MultidimensionalOptimization():
             return render_template("second.html")
     else:
         return render_template("second.html")
+    
+    
+@app.route("/multidimensional-optimization-second", methods=["GET", "POST"])
+def MultidimensionalOptimizationSecond():
+    if request.method == "POST":
+        try:
+            from server.third import ExtremumFinder
+            obj = ExtremumFinder()
+            func = request.form.get("func")
+            x = [float(request.form.get("a")), float(request.form.get("b"))]
+            e1 = float(request.form.get("e1"))
+            e2 = float(request.form.get("e2"))
+            M = float(request.form.get("M"))
+            obj.SetFunc(func)
+            x1, x2, y, k = obj.nyuton(x, e1, e2, M)
+            result = list()
+            result.append(f"Найденная точка: ({x1}; {x2})")
+            result.append(f"Значение функции в точке: {y}")
+            result.append(f"Количество итераций: {k}")
+            plot_function_from_string(func)
+            return render_template("third.html", calculated=result, func=func)
+        except Exception as e:
+            print(e)
+            return render_template("third.html")
+    else:
+        return render_template("third.html")

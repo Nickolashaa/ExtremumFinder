@@ -44,3 +44,8 @@
 .first {border-color: #FFD700}
 
 .second {border-color: lime}
+
+.third {
+    border-color: blue;
+    font-size: 20px;
+}

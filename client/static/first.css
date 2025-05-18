@@ -32,6 +32,8 @@
 
 .second {border-color: lime}
 
+.third {border-color: blue}
+
 .navbar-container {
     display: flex;
     justify-content: center;
