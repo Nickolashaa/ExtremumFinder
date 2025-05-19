@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from server.graph import plot_function, plot_function_from_string
+from server.graph import plot_function, plot_function_from_string, plot_function_and_constraint_3d
 
 
 
@@ -92,3 +92,36 @@ def MultidimensionalOptimizationSecond():
             return render_template("third.html")
     else:
         return render_template("third.html")
+    
+@app.route("/conditional-optimization", methods=["GET", "POST"])
+def ConditionalOptimization():
+    if request.method == "POST":
+        try:
+            from server.forth import ExtremumFinder
+            obj = ExtremumFinder()
+            funcF = request.form.get("funcF")
+            funcG = request.form.get("funcG")
+            x = [float(request.form.get("a")), float(request.form.get("b"))]
+            e = float(request.form.get("e"))
+            r0 = float(request.form.get("r0"))
+            c = float(request.form.get("c"))
+            method = request.form.get("Method")
+            obj.SetFuncF(funcF)
+            obj.SetFuncG(funcG)
+            if method == "method1":
+                x, y, k = obj.penalty_method_search(x, e, r0, c)
+            if method == "method2":
+                x, y, k = obj.barrier_method_search(x, e, r0, c, method="inverse")
+            if method == "method3":
+                x, y, k = obj.barrier_method_search(x, e, r0, c, method="log")
+            result = list()
+            result.append(f"Найденная точка: ({round(x[0], 5)}; {round(x[1], 5)})")
+            result.append(f"Значение функции в точке: {y}")
+            result.append(f"Количество итераций: {k}")
+            plot_function_and_constraint_3d(obj.funcF, obj.funcG)
+            return render_template("forth.html", calculated=result, func=funcF)
+        except Exception as e:
+            print(e)
+            return render_template("forth.html")
+    else:
+        return render_template("forth.html")

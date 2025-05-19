@@ -79,3 +79,62 @@ def plot_function_from_string(func_str, x_range=(-5,5), y_range=(-5,5), points=1
     except Exception as e:
         print(f"Ошибка: {e}")
         return None
+    
+    
+def plot_function_and_constraint_3d(f_str, g_str, x_range=(-5,5), y_range=(-5,5), points=100):
+    try:
+        f_expr = sympify(f_str)
+        g_expr = sympify(g_str)
+        
+        f_func = lambdify((x, y), f_expr, modules=['numpy'])
+        g_func = lambdify((x, y), g_expr, modules=['numpy'])
+
+        x_vals = np.linspace(x_range[0], x_range[1], points)
+        y_vals = np.linspace(y_range[0], y_range[1], points)
+        X, Y = np.meshgrid(x_vals, y_vals)
+
+
+        Z_f = f_func(X, Y)
+        Z_g = g_func(X, Y)
+
+
+        fig = go.Figure()
+
+
+        fig.add_trace(go.Surface(
+            z=Z_f, x=X, y=Y,
+            colorscale='Viridis',
+            opacity=0.9,
+            name='f(x, y)',
+            showscale=False
+        ))
+
+
+        fig.add_trace(go.Surface(
+            z=Z_g, x=X, y=Y,
+            colorscale='Reds',
+            opacity=0.5,
+            name='g(x, y) = 0',
+            showscale=False
+        ))
+
+
+        fig.update_layout(
+            title=f'f(x, y) = {f_str} g(x, y) = {g_str}',
+            scene=dict(
+                xaxis_title='x',
+                yaxis_title='y',
+                zaxis_title='z',
+            ),
+            autosize=False,
+            width=900,
+            height=700
+        )
+
+
+        fig.write_html("client/static/graph.html")
+        return fig
+
+    except Exception as e:
+        print(f"Ошибка: {e}")
+        return None

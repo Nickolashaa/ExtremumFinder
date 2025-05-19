@@ -37,15 +37,15 @@ class ExtremumFinder:
         while k < M:
             gradient = np.array(grad_f(*x))
             
-            # Проверка на почти нулевой градиент
+
             if np.linalg.norm(gradient) < 1e-10:
                 break
                 
-            new_x = x - t * gradient  # Шаг ВПРОТИВ градиента
+            new_x = x - t * gradient 
             new_fx = f(*new_x)
             fx = f(*x)
             
-            # Проверка на NaN/Inf
+
             if np.isnan(new_fx) or np.isinf(new_fx):
                 t = t / 2
                 continue
@@ -54,7 +54,7 @@ class ExtremumFinder:
                 delta_x = np.linalg.norm(new_x - x)
                 delta_f = abs(new_fx - fx)
                 
-                # Критерии остановки
+
                 if delta_x < epsilon1 and delta_f < epsilon2:
                     break
                     
